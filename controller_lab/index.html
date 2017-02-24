@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="ControllerLab">
+<head>
+  <title>Controller Lab</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+</head>
+<body>
+  <h1>Welcome to the Met!</h1>
+  <div ng-controller="UpcomingController as upc">
+    <h3>Coming up next at the Met:</h3>
+    <img src={{upc.exh_img}}>
+  </div>
+
+  <div ng-controller="GenOpsInfoController as gen">
+    <h3>General Info</h3>
+    <h4><b>Hours of Operation</b></h4>
+    <ul ng-repeat="(day, hours) in gen.hours">
+      <li style="list-style: none"><b>{{day}}:</b> {{hours}}</li>
+    </ul><br>
+
+    <h4><b>Ticket Prices</b></h4>
+    <ul ng-repeat="(visitor_bracket, cost) in gen.admission">
+      <li style="list-style: none"><b>{{visitor_bracket}}:</b> {{cost}}</li>
+    </ul><br>
+  </div>
+
+  <div ng-controller="DonorInfoController as dinfo">
+    <h3>Queremos Tu Dinero 💰</h3>
+    <h4><b>Contact For Our Routing Number</b></h4>
+      <p>📧&nbsp&nbsp{{dinfo.contact.email}} <b>||</b> 📞&nbsp&nbsp{{dinfo.contact.phone}}</p>
+      <br>
+    <h4><b>Acceptable Donation Amounts</b></h4>
+      <ul ng-repeat="amount in dinfo.amounts">
+        <li style="list-style: none">{{amount}}</li>
+      </ul><br>
+  </div>
+
+
+
+
+  <script src="js/app.js"></script>
+
+  <script src="js/controllers/UpcomingController.js"></script>
+  <script src="js/controllers/GenOpsInfoController.js"></script>
+  <script src="js/controllers/DonorInfoController.js"></script>
+
+</body>
+</html>
